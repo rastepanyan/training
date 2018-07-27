@@ -1,17 +1,11 @@
-DROP DATABASE IF EXISTS mytask;
-
-CREATE DATABASE mytask;
-
-USE mytask;
-
 CREATE TABLE IF NOT EXISTS `products` (
 	`product_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	`title` VARCHAR(30)  NOT NULL DEFAULT '',
-	`price` DECIMAL(7,2)  NOT NULL DEFAULT '99999.99',
+	`price` DECIMAL(10,2)  NOT NULL DEFAULT '99999999.99',
 	`description` MEDIUMTEXT NOT NULL,
 	`date_of_creation` DATETIME NOT NULL,
 	PRIMARY KEY (`product_id`))
-	ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_swedish_ci;
+	ENGINE = InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci;
 				 
 INSERT INTO `products` (`title`, `price`, `description`, `date_of_creation`)
 VALUES	('Shoes', 119.99, 'An item of footwear intended to protect and comfort the human foot.', NOW()),
