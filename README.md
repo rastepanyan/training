@@ -1,2 +1,2 @@
 # training
-This is a project for edication purpose
+This is a project for education purpose
