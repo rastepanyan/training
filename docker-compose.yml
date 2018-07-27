@@ -17,23 +17,23 @@ services:
       ports:
             - "3306:3306"
     phpmyadmin:
-     image: phpmyadmin/phpmyadmin
-     container_name: 2-phpmyadmin
-     networks:
-             - mynet
-     environment:
-            PMA_ARBITRARY: 1
-            MYSQL_USER: fancooler
-            MYSQL_PASSWORD: 1234
-            MYSQL_ROOT_PASSWORD: 1234root
-     ports:
-            - "80:80"
-     links:
-            # for mysql container
-            - "db:db"
+      image: phpmyadmin/phpmyadmin
+      container_name: 2-phpmyadmin
+      networks:
+              - mynet
+      environment:
+             PMA_ARBITRARY: 1
+             MYSQL_USER: fancooler
+             MYSQL_PASSWORD: 1234
+             MYSQL_ROOT_PASSWORD: 1234root
+      ports:
+             - "80:80"
+      links:
+             # for mysql container
+             - "db:db"
 networks:
-  mynet:
-    driver: "bridge"
+    mynet:
+       driver: "bridge"
 volumes:
     db:
-        driver: "local"
+       driver: "local"
