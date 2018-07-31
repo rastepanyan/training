@@ -1,12 +1,12 @@
 <?php 
-   $servername="localhost";
-   $username="root";
-   $password="1234root";
-   $db="myDB";
+   $servername = "localhost";
+   $username = "root";
+   $password = "1234root";
+   $db = "myDB";
    	
-   $conn=m ysqli_connect($servername, $username, $password, $db);
+   $conn = mysqli_connect($servername, $username, $password, $db);
    	
-   if (!$conn) {
+   if (! $conn) {
    	die( "Failed! " . mysqli_connect_error());
    } 
    echo "Connection established";
