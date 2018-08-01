@@ -1,8 +1,7 @@
 /* Printing the products that have never been ordered */
 
-SELECT title, 
-COUNT(*) AS not_ordered 
-FROM products 
-WHERE products.product_id 
-NOT IN (SELECT orderlines.product_id FROM orderlines WHERE orderlines.quantity >= 1) 
-GROUP BY title;
+SELECT products.product_id, title 
+FROM products
+LEFT JOIN orderlines ON products.product_id = orderlines.product_id
+WHERE orderlines.product_id IS NULL 
+GROUP BY products.product_id, title;
