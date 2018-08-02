@@ -1,39 +1,40 @@
 version: '3'
- 
+
 services:
-    db:
-      image: mysql:5.7.22
-      container_name: 1-mysql
-      environment:
-            - MYSQL_DATABASE=myDB
-            - MYSQL_USER=fancooler
-            - MYSQL_PASSWORD=1234
-            - MYSQL_ROOT_PASSWORD=1234root
-      volumes:
-            - ./dump:/docker-entrypoint-initdb.d
-            - ./db:/var/lib/mysql
-      networks:
-            - mynet
-      ports:
-            - "3306:3306"
-    phpmyadmin:
-      image: phpmyadmin/phpmyadmin
-      container_name: 2-phpmyadmin
-      networks:
-            - mynet
-      environment:
-            PMA_ARBITRARY: 1
-            MYSQL_USER: fancooler
-            MYSQL_PASSWORD: 1234
-            MYSQL_ROOT_PASSWORD: 1234root
-      ports:
-            - "80:80"
-      links:
-            # for mysql container
-            - "db:db"
-networks:
-    mynet:
-       driver: "bridge"
+
+  www:
+    depends_on:
+      - db
+    image: php:7.2-apache
+    volumes:
+      - ./www:/var/www/html
+    ports:
+      - "8030:80"
+
+  db:
+    image: mysql:5.7.22
+    container_name: 1-mysql
+    environment:
+      MYSQL_DATABASE: myDB
+      MYSQL_USER: fancooler
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: 1234root
+    volumes:
+      - ./dump:/docker-entrypoint-initdb.d
+      - ./db:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: 2-phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+      MYSQL_USER: fancooler
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: 1234root
+    ports:
+      - "80:80"
+
 volumes:
-    db:
-       driver: "local"
+  db:
