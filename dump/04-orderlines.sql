@@ -37,4 +37,5 @@ VALUES				 (1, 12.89, 4, 3, 1),
 					 (15, 119.99, 1, 1, 2),																						
 					 (16, 15.49, 9, 2, 1);
 
+CREATE INDEX idx_orderlines ON orderlines (order_id, product_id);
 SELECT * FROM orderlines;

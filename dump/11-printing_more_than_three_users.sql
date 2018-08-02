@@ -5,4 +5,4 @@ COUNT(*) AS total_users
 FROM users 
 GROUP BY country_code 
 HAVING total_users >= 3 
-ORDER BY total_users DESC;
+ORDER BY total_users DESC, country_code ASC;

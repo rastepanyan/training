@@ -1,7 +1,7 @@
 /* Printing the products that have never been ordered */
 
-SELECT products.product_id, title 
-FROM products
-LEFT JOIN orderlines ON products.product_id = orderlines.product_id
-WHERE orderlines.product_id IS NULL 
-GROUP BY products.product_id, title;
+SELECT p.product_id, title 
+FROM products p
+LEFT JOIN orderlines o ON p.product_id = o.product_id
+WHERE o.product_id IS NULL 
+GROUP BY p.product_id, title;
