@@ -5,7 +5,7 @@ services:
   www:
     depends_on:
       - db
-    image: php:7.2-apache
+    image: nimmis/apache-php5
     container_name: 0-php
     volumes:
       - ./www:/var/www/html
